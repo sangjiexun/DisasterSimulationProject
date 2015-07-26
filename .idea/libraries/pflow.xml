@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="pflow">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../pflow" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../pflow/src" />
+    </SOURCES>
+  </library>
+</component>
