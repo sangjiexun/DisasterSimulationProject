@@ -15,8 +15,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import Tools.Correlation;
 import jp.ac.ut.csis.pflow.geom.Mesh;
+import Tools.Correlation;
 
 public class EstimationCheckFujisawa {
 
@@ -177,7 +177,7 @@ public class EstimationCheckFujisawa {
 	}
 
 	public static Double getCorrelation(File input1, File input2, File meshcodefile){
-		//観測データと比較
+		//隕ｳ貂ｬ繝�繝ｼ繧ｿ縺ｨ豈碑ｼ�
 		Map<String,Integer> ptmap = new HashMap<String, Integer>();
 		Map<String,Double> zdcmap = new HashMap<String, Double>();
 		String temp = ("c:/Users/yabec_000/Desktop/tempforCorrel.csv");
@@ -247,7 +247,7 @@ public class EstimationCheckFujisawa {
 		}
 
 		int counter = meshcodeset.size();
-		//観測データとの相関を計算
+		//隕ｳ貂ｬ繝�繝ｼ繧ｿ縺ｨ縺ｮ逶ｸ髢｢繧定ｨ育ｮ�
 		Vector v1 = new Vector();
 		Vector v2 = new Vector();
 		Correlation.readTextFromFile_AndSetVector(temp,v1);
