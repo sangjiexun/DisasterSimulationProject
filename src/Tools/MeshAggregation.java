@@ -1,5 +1,4 @@
 package Tools;
-import java.awt.geom.Rectangle2D;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -34,18 +33,20 @@ public class MeshAggregation extends ATrafficVolume {
 
 	public static void main(String[] args) throws IOException {
 		// create instance ////////////////////////////////
-		MeshTrafficVolume volume = new MeshTrafficVolume(4);	 // mesh level=5
+		MeshTrafficVolume volume = new MeshTrafficVolume(3);	 // mesh level=5
 
 		// load files and aggregate traffic counts ////////
-		File indir = new File("c:/Users/yabetaka/Desktop/shinchi.csv");
+		String in = "/home/t-tyabe/Data/20150512_raw_onlyshutoken";
+		String out = in+"_mesh";
+		File indir = new File(in+".csv");
 
 		try{
 			BufferedReader br = new BufferedReader(new FileReader(indir));
 			String line = null;
 			int i = 1;
 			while( (line = br.readLine()) != null ) {
-				String[] tokens = line.split(",");
-				String pid = tokens[0];
+				String[] tokens = line.split("\t");
+//				String pid = tokens[0];
 				//				int tripno = 0;
 				//				int exfactor=0;
 				//				int transport=0;
@@ -72,7 +73,7 @@ public class MeshAggregation extends ATrafficVolume {
 		}
 
 		// file export ////////////////////////////////////
-		volume.export(new File("C:/Users/yabetaka/Desktop/shinchiMesh_4.csv"));
+		volume.export(new File(out+".csv"));
 	}
 
 
@@ -114,22 +115,22 @@ public class MeshAggregation extends ATrafficVolume {
 		try {
 			// open output file ///////////////////////////
 			bw = new BufferedWriter(new FileWriter(outfile));
-			bw.write("meshcode" + "\t" + "count" + "\t" + "wkt");
-			bw.newLine();
+//			bw.write("meshcode" + "\t" + "count" + "\t" + "wkt");
+//			bw.newLine();
 			// export aggregated data /////////////////////
 			for(Entry<String,Integer> entry:getTrafficCount().entrySet()) {
 				String meshcode = entry.getKey();
 				int    count    = entry.getValue();
-				Mesh  mesh     = new Mesh(meshcode);
-				Rectangle2D.Double rect = mesh.getRect();
-				String wkt      = String.format("POLYGON((%f %f,%f %f,%f %f,%f %f,%f %f))",
-						rect.getMinX(),rect.getMinY(),
-						rect.getMinX(),rect.getMaxY(),
-						rect.getMaxX(),rect.getMaxY(),
-						rect.getMaxX(),rect.getMinY(),
-						rect.getMinX(),rect.getMinY());
+//				Mesh  mesh     = new Mesh(meshcode);
+//				Rectangle2D.Double rect = mesh.getRect();
+//				String wkt      = String.format("POLYGON((%f %f,%f %f,%f %f,%f %f,%f %f))",
+//						rect.getMinX(),rect.getMinY(),
+//						rect.getMinX(),rect.getMaxY(),
+//						rect.getMaxX(),rect.getMaxY(),
+//						rect.getMaxX(),rect.getMinY(),
+//						rect.getMinX(),rect.getMinY());
 				// File out ///////////////////////////////
-				bw.write( String.format("%s\t%d\t%s",meshcode,count,wkt) );
+				bw.write(meshcode+","+count);
 				bw.newLine();
 			}
 		}

@@ -18,7 +18,6 @@ import java.util.Vector;
 
 import jp.ac.ut.csis.pflow.geom.Mesh;
 import Tools.Correlation;
-import Tools.MeshLevelConverter;
 
 /* Made by T.Yabe
  * since 2014/11/24
