@@ -36,7 +36,7 @@ public class MeshAggregation extends ATrafficVolume {
 		MeshTrafficVolume volume = new MeshTrafficVolume(3);	 // mesh level=5
 
 		// load files and aggregate traffic counts ////////
-		String in = "/home/t-tyabe/Data/20150512_raw_onlyshutoken";
+		String in = "/home/t-tyabe/Data/"+args[0]+"_raw_onlyshutoken";
 		String out = in+"_mesh";
 		File indir = new File(in+".csv");
 
